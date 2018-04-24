@@ -1,9 +1,7 @@
 import React from 'react';
 
 const ProductTile = (props) => {
-  //console.log(props);
   const productDetail = props.productDetail;
-  //console.log(productDetail);
   return(
         <div className='tile' data-id={productDetail.id} >
             <img src={productDetail.image} alt={productDetail.title}/>
