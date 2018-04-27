@@ -1,0 +1,15 @@
+.planet-details{
+  width: 500px;
+  margin: 30px auto 0;
+  padding: 20px;
+  text-align: center;
+}
+.planet-details h1{
+  text-align: center;
+}
+.planet-details input{
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+}

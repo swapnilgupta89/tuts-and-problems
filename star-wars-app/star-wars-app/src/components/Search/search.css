@@ -1,0 +1,24 @@
+.search{
+  width: 500px;
+  margin: 30px auto 0;
+  padding: 20px;
+}
+.search h1{
+  text-align: center;
+}
+.search input{
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+}
+.search ul{
+  padding: 0 10px;
+}
+.search ul li{
+  list-style-type: none;
+}
+.search ul li a{
+  text-decoration: none;
+  color: #000;
+}
