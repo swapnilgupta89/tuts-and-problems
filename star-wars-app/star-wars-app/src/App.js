@@ -8,6 +8,8 @@ import setupStore from './store/store';
 import {Provider} from 'react-redux';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
+
+
 const store = setupStore();
 
 class App extends Component {

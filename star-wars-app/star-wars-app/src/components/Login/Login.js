@@ -3,6 +3,8 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import axios from 'axios';
 import './Login.css';
+import {connect} from "react-redux";
+import { loginUser } from "../../actions/loginActions";
 
 class Login extends Component{
   constructor(){
@@ -18,7 +20,8 @@ class Login extends Component{
   }
   componentDidMount(){
     //Users Call
-    if(sessionStorage.getItem("userId") !== null){
+    console.log(this.props);
+    /*if(sessionStorage.getItem("userId") !== null){
       console.log(this.history);
       this.props.history.push('/search');
     }
@@ -29,6 +32,19 @@ class Login extends Component{
         this.setState({
           users
         });
+      });
+    }*/
+  }
+
+  componentWillReceiveProps(nextProps){
+    //console.log(nextProps);
+    debugger;
+    if(nextProps.loginState === true){
+      this.props.history.push('/search');
+    }
+    else{
+      this.setState({
+        errorText: "Username or Password are incorrect"
       });
     }
   }
@@ -41,7 +57,9 @@ class Login extends Component{
   handleSubmit(event){
     event.preventDefault();
     const {users, username, password} = this.state;
-    if((username === "") || (password==="")){
+    this.props.dispatch(loginUser({username, password}));
+
+    /*if((username === "") || (password==="")){
       this.setState({
         errorText: "Username or Password field is empty"
       });
@@ -65,7 +83,7 @@ class Login extends Component{
           errorText: "Username or Password are incorrect"
         });
       }
-    }
+    }*/
   }
 
   render(){
@@ -80,4 +98,10 @@ class Login extends Component{
     )
   }
 }
-export default Login;
+
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {loginState: state.login.loginState};
+};
+export default connect(mapStateToProps)(Login);

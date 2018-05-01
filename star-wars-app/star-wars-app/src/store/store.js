@@ -3,15 +3,15 @@ import rootReducer from '../reducers/rootReducer';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunkMiddleware from 'redux-thunk';
 
-const initialState = {};
+const initialState = {
+  loginState: false
+};
 
-const setupStore = (initialState) => {
+const setupStore = () => {
     return createStore(
         rootReducer,
-        initialState
+        applyMiddleware(thunkMiddleware)
     );
 }
 
 export default setupStore;
-
-
