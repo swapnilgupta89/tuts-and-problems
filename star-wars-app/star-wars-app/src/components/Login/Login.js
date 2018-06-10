@@ -18,27 +18,8 @@ class Login extends Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount(){
-    //Users Call
-    console.log(this.props);
-    /*if(sessionStorage.getItem("userId") !== null){
-      console.log(this.history);
-      this.props.history.push('/search');
-    }
-    else{
-      axios.get(`https://swapi.co/api/people`)
-      .then(res => {
-        const users = (res.status === 200) ? res.data.results : [];
-        this.setState({
-          users
-        });
-      });
-    }*/
-  }
 
   componentWillReceiveProps(nextProps){
-    //console.log(nextProps);
-    debugger;
     if(nextProps.loginState === true){
       this.props.history.push('/search');
     }
@@ -58,32 +39,6 @@ class Login extends Component{
     event.preventDefault();
     const {users, username, password} = this.state;
     this.props.dispatch(loginUser({username, password}));
-
-    /*if((username === "") || (password==="")){
-      this.setState({
-        errorText: "Username or Password field is empty"
-      });
-    }
-    else{
-      this.setState({
-        errorText: ""
-      });
-      let isUserPresent = users.filter(elem => {
-        if((username === elem.name) && (password === elem.birth_year))
-          return true;
-      });
-      if(isUserPresent.length){
-        let userIdArray = isUserPresent[0].url.split("/"),
-            userId = userIdArray[userIdArray.length - 2];
-        sessionStorage.setItem("userId", userId);
-        this.props.history.push('/search');
-      }
-      else{
-        this.setState({
-          errorText: "Username or Password are incorrect"
-        });
-      }
-    }*/
   }
 
   render(){
@@ -101,7 +56,6 @@ class Login extends Component{
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {loginState: state.login.loginState};
 };
 export default connect(mapStateToProps)(Login);

@@ -3,11 +3,12 @@ import axios from 'axios';
 import Input from "../Input/Input";
 import SearchResults  from '../SearchResults/SearchResults';
 import Logout from "../Logout/Logout";
+import {connect} from "react-redux";
 import './search.css';
 
 class Search extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       planets: [],
       filteredPlanets:[]
@@ -15,7 +16,7 @@ class Search extends Component{
     this.handleChange =  this.handleChange.bind(this);
   }
   componentDidMount(){
-    if(sessionStorage.getItem("userId") === null){
+    if(!this.props.loginState){
       this.props.history.push('/');
     }
     else{
@@ -57,5 +58,9 @@ class Search extends Component{
     );
   }
 }
-
-export default Search;
+const mapStateToProps = (state) => {
+  debugger;
+  console.log(state);
+  return {loginState: state.login.loginState};
+};
+export default connect(mapStateToProps)(Search);

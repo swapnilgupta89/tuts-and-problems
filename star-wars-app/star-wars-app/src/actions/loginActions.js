@@ -3,12 +3,10 @@ var ReduxThunk = require('redux-thunk').default;
 import axios from 'axios';
 
 export const loginUser = (data) => {
-  console.log(data);
   return dispatch => {
     axios.get(`https://swapi.co/api/people`)
     .then(res => {
       const users = (res.status === 200) ? res.data.results : [];
-      console.log(users);
       var flag = 0;
       let isUserPresent = users.filter(elem => {
         if((data.username === elem.name) && (data.password === elem.birth_year))
@@ -20,13 +18,8 @@ export const loginUser = (data) => {
       else{
         dispatch(loginUserError({loginState:false}));
       }
-      //console.log(isUserPresent);
     });
   }
-    /*return {
-        type: LOGIN_USER,
-        data: data
-    }*/
 }
 
 

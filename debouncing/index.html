@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input type="text" id="text1"/>
+    <script>
+      var text1 = document.getElementById("text1");
+      var k;
+      text1.addEventListener("keyup", function(){
+        if (typeof k !== "undefined"){
+          clearTimeout(k);
+        }
+        k = setTimeout(function(){
+          console.log("hello");
+        }, 1000);
+      });
+      text1.addEventListener("change", function(){
+        console.log("change");
+      })
+    </script>
+  </body>
+</html>
